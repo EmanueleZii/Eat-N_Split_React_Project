@@ -1,38 +1,180 @@
-.App {
-  text-align: center;
+:root {
+  --color-lightest: #e6f7ff; /* Azzurro chiaro */
+  --color-light: #cce7ff; /* Blu chiaro */
+  --color-medium: #4dabf7; /* Blu medio */
+  --color-dark: #228be6; /* Blu scuro */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+html {
+  font-size: 62.5%;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, 
+    "Helvetica Neue", Arial, sans-serif; /* Aggiornato font */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body {
+  height: 100vh;
+  color: #343a40; /* Grigio scuro */
+  background-color: #f8f9fa; /* Grigio chiaro di sfondo */
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.app {
+  min-height: 66vh;
+  display: grid;
+  grid-template-columns: 34rem 44rem;
+  column-gap: 4rem;
+  align-items: start;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.button {
+  background-color: var(--color-medium);
+  color: #fff;
+  padding: 0.8rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Aggiunto effetto ombra */
+}
+
+.button:hover {
+  background-color: var(--color-dark);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Ombra più marcata */
+}
+
+.sidebar ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+}
+
+.sidebar li {
+  display: grid;
+  grid-template-columns: 4.8rem 1fr auto;
+  align-items: center;
+  column-gap: 1.6rem;
+
+  padding: 1.2rem;
+  border-radius: 8px;
+  background-color: #f1f3f5; /* Sfondo di base per item */
+  transition: 0.5s;
+}
+
+.selected,
+.sidebar li:hover {
+  background-color: var(--color-lightest);
+  transform: scale(1.03); /* Effetto di hover con zoom leggero */
+}
+
+.sidebar li img {
+  border-radius: 50%;
+  width: 100%;
+  grid-row: span 2;
+  border: 2px solid var(--color-light); /* Aggiunto bordo */
+}
+
+.sidebar li h3 {
+  grid-row: 1;
+  grid-column: 2;
+}
+
+.sidebar li p {
+  grid-row: 2;
+  grid-column: 2;
+}
+
+.sidebar li .button {
+  grid-row: span 2;
+  grid-column: 3;
+}
+
+.sidebar > .button {
+  float: right;
+  margin-right: 1.2rem;
+}
+
+.green {
+  color: #2b8a3e; /* Verde scuro */
+}
+
+.red {
+  color: #c92a2a; /* Rosso intenso */
+}
+
+form {
+  font-size: 1.6rem;
+  display: grid;
+  align-items: center;
+  gap: 1.2rem;
+
+  background-color: var(--color-lightest);
+  border-radius: 8px;
+  padding: 1.6rem; /* Aggiunto padding per bilanciare il contenuto */
+}
+
+.form-add-friend {
+  grid-template-columns: 1fr 1.5fr;
+  margin-bottom: 1.6rem;
+}
+
+.form-split-bill {
+  grid-template-columns: 1fr 12rem;
+  padding: 3.2rem 4rem;
+}
+
+label {
+  font-weight: 500;
+  color: #495057; /* Grigio */
+}
+
+label::first-letter {
+  display: inline-block;
+  margin-right: 4px;
+  font-size: 1.8rem;
+  font-weight: bold; /* Evidenziare la prima lettera */
+}
+
+input,
+select {
+  font-family: inherit;
+  color: #495057;
+  font-size: 1.5rem;
+  padding: 0.7rem;
+  text-align: center;
+  border: 1px solid var(--color-light);
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border: 1px solid var(--color-dark);
+  box-shadow: 0 0 5px rgba(34, 139, 230, 0.5); /* Effetto glow su focus */
+}
+
+form .button {
+  margin-top: 0.6rem;
+  grid-column: 2;
+}
+
+form h2 {
+  grid-column: 1 / -1;
+  font-size: 2.4rem;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  margin-bottom: 1.6rem;
+  color: var(--color-medium); /* Aggiunto colore ai titoli */
 }
