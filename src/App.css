@@ -74,6 +74,7 @@ body {
 
 .selected,
 .sidebar li:hover {
+  cursor: pointer;
   background-color: var(--color-lightest);
   transform: scale(1.03); /* Effetto di hover con zoom leggero */
 }
