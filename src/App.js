@@ -24,11 +24,14 @@ const initialFriends = [
 export default function App() {
   return (
     <div className='app'>
-      <h1 className='title'>FriendList</h1>
       <div className='sidebar'>
         <FriendList initialFriends={initialFriends} />
+        <FormAddfriend />
+        <Button>Add Friend</Button>
       </div>
+      <FormSplitBill />
     </div>
+    
   );
 }
 
@@ -36,6 +39,7 @@ export default function App() {
   const friends = initialFriends;
   return(
     <div>
+      <h1 className='title'>FriendList</h1>
       <ul>
       {friends.map(
         (friend) => (
@@ -49,16 +53,62 @@ export default function App() {
  function Friend({ friend }){
   return (
     <li>
-      <img src={friend.image} alt={friend.name} />
-      <h3>{friend.name}</h3>
-      {friend.balance < 0 && 
-      <p className='red'>You owe {friend.name} {Math.abs(friend.balance)}</p>}
-      {friend.balance > 0 && 
+       <img src={friend.image} alt={friend.name} />
+       <h3>{friend.name}</h3>
+       {friend.balance < 0 && 
+       <p className='red'>You owe {friend.name} {Math.abs(friend.balance)}</p>}
+       {friend.balance > 0 && 
         <p className='green'>{friend.name} owens you {Math.abs(friend.balance)}</p>}
-      {friend.balance === 0 && 
+       {friend.balance === 0 && 
         <p>You owe {friend.name} are even</p>}
-
-        <button className='button'>Select</button>
-    </li>
+        
+        <Button>Select</Button>
+       </li>
     );
+ }
+
+ function Button({children}){
+  return(
+    <button className='button'>{children}</button>
+  );
+ }
+
+ function FormAddfriend(){
+  return(
+    <form className='form-add-firend'>
+      <label>FriendName</label>
+      <input type='text' />
+    
+      <label>Image Url</label>
+      <input type='text' />
+
+     <Button>Add</Button>
+    </form>
+  );
+ }
+
+ function FormSplitBill(){
+  return(
+    <form className='form-split-bill'>
+      
+      <h2>Split a Bill with Friend X</h2>
+     
+      <label> Bill Value </label>
+      <input type='number'/>
+
+      <label> Your expense </label>
+      <input type='number'/>
+
+      <label> X's expense </label>
+      <input type='number' disabled />
+      
+     <label> Who is paying the bill?</label>
+      <select>
+        <option value='user'>You </option>
+        <option value='friend'>X' Friend </option>
+      </select>
+    
+     <Button>Split Bill</Button>
+    </form>
+  );
  }

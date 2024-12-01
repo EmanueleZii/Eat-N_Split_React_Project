@@ -140,13 +140,6 @@ label {
   color: #495057; /* Grigio */
 }
 
-label::first-letter {
-  display: inline-block;
-  margin-right: 4px;
-  font-size: 1.8rem;
-  font-weight: bold; /* Evidenziare la prima lettera */
-}
-
 input,
 select {
   font-family: inherit;
